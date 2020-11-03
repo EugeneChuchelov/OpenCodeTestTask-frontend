@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+  <h2>Forms</h2>
+  <button type="button" class="btn btn-success" *ngIf="isAdmin" (click)="addForm()">Add new</button>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Created At</th>
+      <th></th>
+      <th *ngIf="isAdmin"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let form of forms">
+      <td>{{form.title}}</td>
+      <td>{{form.creator}}</td>
+      <td>{{form.created_at | date: 'dd/MM/yyyy HH:mm'}}</td>
+      <td>
+        <button class="btn btn-info" (click)="completeForm(form)">Complete form</button>
+      </td>
+      <td>
+        <button class="btn btn-danger" *ngIf="isAdmin" (click)="editForm(form)">Edit form</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

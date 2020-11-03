@@ -6,6 +6,12 @@ export const environment = {
   production: false
 };
 
+export const api = {
+  user: 'http://localhost:8080/user',
+  login: 'http://localhost:8080/token',
+  form: 'http://localhost:8080/form',
+  completed_form: 'http://localhost:8080/form/completed'
+};
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

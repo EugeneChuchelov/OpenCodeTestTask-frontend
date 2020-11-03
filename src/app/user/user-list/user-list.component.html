@@ -1,0 +1,23 @@
+<app-header></app-header>
+<div class="container">
+  <h2>Users</h2>
+
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Role</th>
+      <th *ngIf="isAdmin">Completed Forms</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.username}}</td>
+      <td>{{user.role}}</td>
+      <td *ngIf="isAdmin">
+        <button class="btn btn-info" (click)="listCompletedForms(user)">List forms</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="container">
+  <h2>{{form.title}}</h2>
+  <hr/>
+  <div *ngFor="let question of questions; let i = index;" class="">
+    <h4>{{question.text}}</h4>
+    <h6>Choose {{questionType[question.type] | lowercase}}</h6>
+
+    <div *ngFor="let answer of question.answers; let j = index;" class="">
+      <div *ngIf="questionType[question.type] === questionType.ONE">
+        <input type="radio" name="{{'question' + i}}" value="{{j}}"
+               [(ngModel)]="question.chosen" style="margin-right: 5px" class="float-left"
+               id="{{'answer_one' + i + '-' + j}}">
+        <label for="{{'answer_one' + i + '-' + j}}">
+          <span>{{answer.text}}</span>
+        </label>
+      </div>
+      <div *ngIf="questionType[question.type] === questionType.MANY">
+        <input type="checkbox"
+               [(ngModel)]="answer.checked" style="margin-right: 5px" class="float-left"
+               id="{{'answer_many' + i + '-' + j}}"/>
+        <label for="{{'answer_many' + i + '-' + j}}">
+          <span>{{answer.text}}</span>
+        </label>
+      </div>
+      <br/>
+    </div>
+    <hr/>
+  </div>
+  <button type="button" class="btn btn-success" (click)="submit()">Submit</button>
+  <button type="button" class="btn btn-info" style="margin-left: 20px" [routerLink]="'/form-list'">Cancel</button>
+</div>

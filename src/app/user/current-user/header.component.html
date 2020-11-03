@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="span12">
+      <div class="head">
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="span6">
+              <h1 class="muted">Form System</h1>
+            </div>
+            <div class="span1" style="margin-top:10px;">
+              <h3>{{username}}</h3>
+            </div>
+            <div class="span2 offset2" style="margin-top:15px;">
+              <button class="btn pull-right" type="button" (click)="signOut()">Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar">
+        <div class="navbar-inner">
+          <div class="container">
+            <ul class="nav">
+              <li>
+                <a [routerLink]="'/form-list'">List forms</a>
+              </li>
+              <li>
+                <a [routerLink]="'/user-list'">List users</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

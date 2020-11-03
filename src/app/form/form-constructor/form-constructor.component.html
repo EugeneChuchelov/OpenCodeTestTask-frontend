@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div class="container">
+  <label for="title">Form title:</label>
+  <input [(ngModel)]="form.title" class="form-control" placeholder="Title" id="title"/>
+  <hr/>
+  <div *ngFor="let question of form.questions" class="form-group">
+    <label for="q_text">Question text:</label>
+    <input [(ngModel)]="question.text" class="form-control" placeholder="Question" id="q_text"/>
+
+    <label for="type">One or many possible answers:</label>
+    <select [(ngModel)]="question.type" name="type" class="form-control" id="type">
+      <option value="" disabled selected>one or many answers</option>
+      <option *ngFor="let item of keys(types)" [ngValue]="item">{{types[item]}}</option>
+    </select>
+
+    <div *ngFor="let answer of question.answers" class="form-group offset-1">
+      <label for="a_text">Answer text:</label>
+      <input [(ngModel)]="answer.text" class="form-control" placeholder="Answer" id="a_text"/>
+      <button type="button" class="btn btn-info" (click)="removeAnswer(question, answer)">Remove answer</button>
+    </div>
+
+    <button type="button" class="btn btn-info offset-1" (click)="addAnswer(question)">Add answer</button>
+    <br/><br/>
+    <button type="button" class="btn btn-info" (click)="removeQuestion(question)">Remove question</button>
+    <hr/>
+  </div>
+
+  <button type="button" class="btn btn-info" (click)="addQuestion()">Add question</button>
+  <br/>
+  <hr/>
+  <button type="button" *ngIf="!isUpdate" class="btn btn-success" (click)="submit()">Submit</button>
+  <button type="button" *ngIf="isUpdate" class="btn btn-success" (click)="update()">Update</button>
+  <button type="button" class="btn btn-info" style="margin-left: 20px" [routerLink]="'/form-list'">Cancel</button>
+</div>
+
